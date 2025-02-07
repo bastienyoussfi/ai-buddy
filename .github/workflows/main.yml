@@ -45,7 +45,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install -D jest @types/jest ts-jest
 
       - name: Cache NX dependencies
         uses: actions/cache@v3

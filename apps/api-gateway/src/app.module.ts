@@ -4,7 +4,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 
 import { AuthModule } from './auth/auth.module';
 import configuration from './config/configuration';
-import { validate } from './config/env.validation';
+import { validate } from './config/validation.schema';
 import { HealthModule } from './health/health.module';
 import { PrismaModule } from './prisma/prisma.module';
 
