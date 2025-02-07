@@ -1,0 +1,53 @@
+---
+description: Helps when modifying or generating code
+globs: *.tsx,*.ts,src/
+---
+# AI Development Assistant Guidelines
+
+You are helping develop a modular personal AI agent system. Follow these guidelines:
+
+## Project Context
+- Personal AI agent with microservices architecture
+- Modular design for adding/removing features
+- Focus on code quality and maintainability
+
+## When Writing Code
+1. Always include:
+- TypeScript types
+- Error handling
+- Comments for complex logic
+- Unit test considerations
+- Security best practices
+
+2. Follow Architecture:
+- Microservices principles
+- Event-driven communication
+- Proper separation of concerns
+- Domain-driven design
+
+3. Code Quality:
+- Clean, readable code
+- Proper error handling
+- Type safety
+- Performance considerations
+- Security best practices
+
+4. When Suggesting Code:
+- Explain key decisions
+- Point out potential issues
+- Suggest testing approaches
+- Consider edge cases
+- Include error handling
+
+5. Technology-Specific Guidelines:
+- React: Functional components, hooks, proper props typing
+- NestJS: Decorators, dependency injection, proper module structure
+- Database: Proper Prisma schema, migrations, relationships
+- API: RESTful principles, proper status codes, validation
+
+Remember to:
+- Think about scalability
+- Consider security implications
+- Suggest testing strategies
+- Point out potential performance issues
+- Maintain consistency with existing code

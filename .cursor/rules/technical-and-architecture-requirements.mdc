@@ -1,0 +1,104 @@
+---
+description: This rule allows for good project development and guidelines
+globs: *.ts,*.tsx,src/
+---
+# Project Development Rules and Guidelines
+
+## Technology Stack
+- Frontend: React (Vite), TypeScript, Tailwind CSS, TanStack Query, Socket.io-client, Zustand, Zod
+- Backend: NestJS, RabbitMQ, PostgreSQL (Prisma), Redis, Bull
+- Infrastructure: Docker, Kubernetes (future)
+
+## Code Quality Requirements
+1. TypeScript
+- Strict type checking enabled
+- No 'any' types unless absolutely necessary
+- Use interfaces for data structures
+- Proper error handling with custom types
+
+2. React Components
+- Functional components with proper typing
+- Custom hooks in separate files
+- Props interfaces defined
+- Use Tailwind classes consistently
+- No inline styles
+
+3. NestJS Services
+- Follow dependency injection principles
+- Use proper decorators
+- Implement interfaces
+- Handle errors appropriately
+- Use DTOs for data validation
+
+4. Database
+- Use Prisma migrations
+- Define proper relationships
+- Include proper indexes
+- Handle transactions correctly
+
+## Architecture Guidelines
+1. Microservices
+- Keep services independent
+- Use message queues for communication
+- Implement circuit breakers
+- Handle service discovery
+
+2. API Design
+- RESTful principles
+- Proper status codes
+- Consistent error responses
+- API versioning
+- Swagger documentation
+
+3. State Management
+- Use Zustand for global state
+- React Query for server state
+- Local state when appropriate
+- Proper cache management
+
+## Testing Requirements
+- Unit tests for business logic
+- Integration tests for APIs
+- E2E tests for critical paths
+- Test coverage requirements
+- Mock external services
+
+## Security Guidelines
+- Input validation
+- Authentication checks
+- Rate limiting
+- CORS configuration
+- Environment variable usage
+
+## Performance Requirements
+- Lazy loading components
+- Proper indexing
+- Caching strategy
+- Bundle size optimization
+- API response times
+
+## Development Workflow
+1. Git Practices
+- Feature branch workflow
+- Conventional commits
+- PR requirements
+- Code review guidelines
+
+2. Documentation
+- Code comments
+- API documentation
+- Setup instructions
+- Architecture decisions
+
+## Error Handling
+- Custom error classes
+- Error boundaries in React
+- Logging strategy
+- User-friendly error messages
+
+Remember:
+- Code must be maintainable
+- Follow DRY principles
+- Write self-documenting code
+- Consider scalability
+- Regular security updates
