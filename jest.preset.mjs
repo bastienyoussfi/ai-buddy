@@ -16,4 +16,4 @@ export default {
     '!src/**/*.interface.ts',
     '!src/**/*.dto.ts',
   ],
-};
+}; 
