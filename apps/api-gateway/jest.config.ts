@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'api-gateway',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.mjs',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
@@ -22,5 +22,9 @@ export default {
       lines: 80,
       statements: 80,
     },
+  },
+  moduleNameMapper: {
+    '^@app/(.*)$': '<rootDir>/../../apps/$1',
+    '^@lib/(.*)$': '<rootDir>/../../libs/$1',
   },
 };
