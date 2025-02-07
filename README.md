@@ -1,82 +1,78 @@
-# 
+# AI Agent System
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A modular personal AI agent system built with NestJS, React, and microservices architecture.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Prerequisites
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/nest?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+Before you begin, ensure you have installed:
 
-## Finish your CI setup
+- Node.js (v18 or later)
+- npm (comes with Node.js)
+- Docker and Docker Compose
+- Git
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/VLeLlZgilH)
+## Setup Instructions
 
+1. **Clone the repository**
 
-## Run tasks
+   ```bash
+   git clone <repository-url>
+   cd <repository-name>
+   ```
 
-To run the dev server for your app, use:
+2. **Install dependencies**
 
-```sh
-npx nx serve .
-```
+   ```bash
+   npm ci
+   ```
 
-To create a production bundle:
+3. **Set up environment variables**
+   Create a `.env` file in the root directory with:
 
-```sh
-npx nx build .
-```
+   ```env
+   # Database
+   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/aiagent
+   POSTGRES_DB=aiagent
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=postgres
 
-To see all available targets to run for a project, run:
+   # Redis
+   REDIS_URL=redis://localhost:6379
 
-```sh
-npx nx show project .
-```
+   # RabbitMQ
+   RABBITMQ_USER=user
+   RABBITMQ_PASS=password
+   ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+4. **Start development services**
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+   ```bash
+   npm run docker:dev
+   ```
 
-## Add new projects
+   This will start PostgreSQL, Redis, and RabbitMQ in Docker containers.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+5. **Generate Prisma client and run migrations**
 
-Use the plugin's generator to create new projects.
+   ```bash
+   npm run prisma:generate
+   npm run prisma:migrate
+   ```
 
-To generate a new application, use:
+6. **Start the development server**
+   ```bash
+   npm run start:dev
+   ```
 
-```sh
-npx nx g @nx/nest:app demo
-```
+## Available Scripts
 
-To generate a new library, use:
+- `npm run lint` - Run linting checks
+- `npm run format` - Format code using Prettier
+- `npm run test` - Run all tests
+- `npm run build` - Build all applications
+- `npm run type-check` - Run TypeScript type checking
+- `npm run docker:dev` - Start development services
+- `npm run prisma:generate` - Generate Prisma client
+- `npm run prisma:migrate` - Run database migrations
 
-```sh
-npx nx g @nx/node:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/nest?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Project Structure
