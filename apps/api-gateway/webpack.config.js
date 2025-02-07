@@ -24,14 +24,18 @@ module.exports = composePlugins(withNx(), config => {
     ],
   };
 
-  // Configure externals properly
+  // Configure externals properly with updated syntax
   config.externals = [
-    function (context, request, callback) {
+    ({ context, request }, callback) => {
       if (
         [
           '@nestjs/microservices',
           '@nestjs/websockets',
           '@nestjs/platform-express',
+          '@nestjs/platform-socket.io',
+          '@nestjs/sequelize',
+          '@nestjs/typeorm',
+          '@nestjs/mongoose',
           'cache-manager',
           'class-transformer',
           'class-validator',
@@ -42,9 +46,7 @@ module.exports = composePlugins(withNx(), config => {
           'kafkajs',
           'mqtt',
           '@mikro-orm/core',
-          '@nestjs/mongoose',
-          '@nestjs/sequelize',
-          '@nestjs/typeorm',
+          'class-transformer/storage',
         ].includes(request)
       ) {
         return callback(null, 'commonjs ' + request);
