@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: ['**']
   pull_request:
     branches: [main]
 
@@ -92,8 +92,8 @@ jobs:
           file: ./apps/api-gateway/Dockerfile
           push: true
           tags: |
-            your-username/ai-agent-api:latest
-            your-username/ai-agent-api:${{ github.sha }}
+            bastienyoussfi/ai-agent-api:latest
+            bastienyoussfi/ai-agent-api:${{ github.sha }}
 
       - name: Build and push Reminder Service
         uses: docker/build-push-action@v4
@@ -101,4 +101,4 @@ jobs:
           context: .
           file: ./apps/reminder-service/Dockerfile
           push: true
-          tags: your-username/ai-agent-reminder:latest
+          tags: bastienyoussfi/ai-agent-reminder:latest
