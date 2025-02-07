@@ -1,4 +1,4 @@
-import { default as nxPreset } from '@nx/jest/preset';
+import nxPreset from '@nx/jest/preset/index.js';
 
 export default {
   ...nxPreset,
@@ -7,7 +7,7 @@ export default {
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
-  moduleFileExtensions: ['ts', 'js', 'html'],
+  moduleFileExtensions: ['ts', 'js', 'html', 'mjs'],
   coverageReporters: ['text', 'html', 'lcov'],
   collectCoverageFrom: [
     'src/**/*.ts',

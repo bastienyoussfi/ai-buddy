@@ -45,9 +45,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm ci
+        run: npm ci
 
       - name: Cache NX dependencies
         uses: actions/cache@v3
@@ -64,6 +62,7 @@ jobs:
       - name: Test
         run: npx nx run-many --target=test --all
         env:
+          NODE_OPTIONS: --experimental-vm-modules
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aiagent_test
           REDIS_URL: redis://localhost:6379
 
