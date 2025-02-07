@@ -1,6 +1,6 @@
 ---
 description: Helps when modifying or generating code
-globs: *.tsx,*.ts,src/
+globs: *.tsx,*.ts,src/,*
 ---
 # AI Development Assistant Guidelines
 
