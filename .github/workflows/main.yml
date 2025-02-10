@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: ['**']
   pull_request:
     branches: [main]
 
@@ -41,7 +41,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
@@ -62,6 +62,7 @@ jobs:
       - name: Test
         run: npx nx run-many --target=test --all
         env:
+          NODE_OPTIONS: --experimental-vm-modules
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/aiagent_test
           REDIS_URL: redis://localhost:6379
 
@@ -92,8 +93,8 @@ jobs:
           file: ./apps/api-gateway/Dockerfile
           push: true
           tags: |
-            your-username/ai-agent-api:latest
-            your-username/ai-agent-api:${{ github.sha }}
+            bastienyoussfi/ai-agent-api:latest
+            bastienyoussfi/ai-agent-api:${{ github.sha }}
 
       - name: Build and push Reminder Service
         uses: docker/build-push-action@v4
@@ -101,4 +102,4 @@ jobs:
           context: .
           file: ./apps/reminder-service/Dockerfile
           push: true
-          tags: your-username/ai-agent-reminder:latest
+          tags: bastienyoussfi/ai-agent-reminder:latest

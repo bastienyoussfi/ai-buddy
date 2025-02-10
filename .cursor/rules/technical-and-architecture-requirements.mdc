@@ -1,6 +1,6 @@
 ---
 description: This rule allows for good project development and guidelines
-globs: *.ts,*.tsx,src/
+globs: *.ts,*.tsx,src/,*
 ---
 # Project Development Rules and Guidelines
 
