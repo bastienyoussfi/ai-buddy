@@ -21,51 +21,28 @@ module.exports = composePlugins(withNx(), config => {
         test: /\.js.map$/,
         loader: 'ignore-loader',
       },
+      {
+        test: /\.node$/,
+        use: 'node-loader',
+      },
     ],
   };
 
-  // Configure externals properly with updated syntax
+  // Configure externals to exclude problematic dependencies
   config.externals = [
-    ({ context, request }, callback) => {
+    ...(config.externals || []),
+    'mock-aws-s3',
+    'aws-sdk',
+    'nock',
+    'bcrypt',
+    'node-gyp',
+    'npm',
+    '@mapbox/node-pre-gyp',
+    function ({ context, request }, callback) {
       if (
-        [
-          '@nestjs/microservices',
-          '@nestjs/websockets',
-          '@nestjs/platform-express',
-          '@nestjs/platform-socket.io',
-          '@nestjs/sequelize',
-          '@nestjs/typeorm',
-          '@nestjs/mongoose',
-          'cache-manager',
-          'class-transformer',
-          'class-validator',
-          '@grpc/grpc-js',
-          '@grpc/proto-loader',
-          'amqp-connection-manager',
-          'nats',
-          'kafkajs',
-          'mqtt',
-          '@mikro-orm/core',
-          'class-transformer/storage',
-          'pg-hstore',
-          'pg',
-          'pg-native',
-          'pg-query-stream',
-          'mysql',
-          'mysql2',
-          'oracledb',
-          'mongodb',
-          'sqlite3',
-          'better-sqlite3',
-          'sql.js',
-          'mssql',
-          'redis',
-          'typeorm-aurora-data-api-driver',
-          '@sap/hana-client',
-          'hdb-pool',
-          '@google-cloud/spanner',
-          'react-native-sqlite-storage',
-        ].includes(request)
+        /^(@nestjs\/microservices|@nestjs\/websockets|@nestjs\/platform-express)/.test(
+          request,
+        )
       ) {
         return callback(null, 'commonjs ' + request);
       }
@@ -73,10 +50,16 @@ module.exports = composePlugins(withNx(), config => {
     },
   ];
 
-  // Ignore optional dependencies
+  // Ignore warnings for certain modules
   config.ignoreWarnings = [
     {
-      module: /sequelize|typeorm|mysql|sqlite|mssql|oracle|mongodb/,
+      module: /node-pre-gyp|bcrypt/,
+    },
+    {
+      module: /optional-require/,
+    },
+    {
+      module: /load-package/,
     },
   ];
 
