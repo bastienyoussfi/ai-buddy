@@ -33,7 +33,6 @@ describe('AuthService', () => {
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   describe('login', () => {
