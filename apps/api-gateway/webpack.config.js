@@ -47,11 +47,36 @@ module.exports = composePlugins(withNx(), config => {
           'mqtt',
           '@mikro-orm/core',
           'class-transformer/storage',
+          'pg-hstore',
+          'pg',
+          'pg-native',
+          'pg-query-stream',
+          'mysql',
+          'mysql2',
+          'oracledb',
+          'mongodb',
+          'sqlite3',
+          'better-sqlite3',
+          'sql.js',
+          'mssql',
+          'redis',
+          'typeorm-aurora-data-api-driver',
+          '@sap/hana-client',
+          'hdb-pool',
+          '@google-cloud/spanner',
+          'react-native-sqlite-storage',
         ].includes(request)
       ) {
         return callback(null, 'commonjs ' + request);
       }
       callback();
+    },
+  ];
+
+  // Ignore optional dependencies
+  config.ignoreWarnings = [
+    {
+      module: /sequelize|typeorm|mysql|sqlite|mssql|oracle|mongodb/,
     },
   ];
 
