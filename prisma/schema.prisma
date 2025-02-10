@@ -8,12 +8,27 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  email     String    @unique
-  name      String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  reminders Reminder[]
+  id                    String    @id @default(uuid())
+  email                 String    @unique
+  name                  String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  reminders             Reminder[]
+  password              Password?
+}
+
+model Password {
+  id                    String    @id @default(uuid())
+  hash                  String    // Stores the hashed password
+  userId                String    @unique
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resetToken           String?   @unique
+  resetTokenExpiresAt  DateTime?
+  lastChanged          DateTime  @default(now())
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  @@index([resetToken])
 }
 
 model Reminder {

@@ -1,6 +1,6 @@
 # AI Agent System
 
-[![CI/CD Pipeline](https://github.com/bastienyoussfi/ai-agent-system/actions/workflows/main.yml/badge.svg)](https://github.com/bastienyoussfi/ai-agent-system/actions/workflows/main.yml)
+[![CI/CD Pipeline](https://github.com/bastienyoussfi/ai-buddy/actions/workflows/main.yml/badge.svg)](https://github.com/bastienyoussfi/ai-buddy/actions/workflows/main.yml)
 
 A modular personal AI agent system built with NestJS, React, and microservices architecture.
 
